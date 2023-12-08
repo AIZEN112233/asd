@@ -59,7 +59,22 @@ int get_tree_height(TreeNode *node)
 }
 TreeNode *gauche(TreeNode *racine) {}
 TreeNode *droit(TreeNode *racine) {}
-TreeNode *creer_arbre(int x, TreeNode *g, TreeNode *d) {}
+TreeNode *create_tree(int value, TreeNode *left, TreeNode *right)
+{
+    // Allocate memory for the new node
+    TreeNode *node = (TreeNode *)malloc(sizeof(TreeNode));
+    if (node == NULL)
+    {
+        return NULL; // Memory allocation failed
+    }
+
+    // Initialize node data and children
+    node->data = value;
+    node->left = left;
+    node->right = right;
+
+    return node;
+}
 TreeNode *inserer(TreeNode **racine, int x) {}
 int rechercher(TreeNode *racine, int x) {}
 int rechercher_min(TreeNode *racine) {}
