@@ -1,18 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char messages[1000][1000] = {
+//  TODO: fix returns for search function
+//  TODO: find a way to let user enter the values
+char messages[100][100] = {
     "create new empty tree",
-    "see if the tree is empty (1 for not empty and 0 for empty)",
-    "get the height of tree",
+    "see if the tree is empty (1 for not empty and 0 for empty)", // done
+    "get the height of tree",                                     // done
     "get the left side of tree",
     "get the right side of tree",
     "create tree user 2 difrent nodes",
     "insert new value",
-    "search for a value",
-    "get the min value in the tree",
+    "search for a value",            // done
+    "get the min value in the tree", // done
     "delete node from the tree",
-    "get the addition of all values in the tree",
+    "get the addition of all values in the tree", // done
     "print the tree in the terminal",
     "exit the code",
 };
@@ -124,7 +126,7 @@ int search(TreeNode *root, int value)
     {
         if (value == root->data)
         {
-            return 1; // Found the value
+            return root->data; // Found the value
         }
         else if (value < root->data)
         {
@@ -283,6 +285,7 @@ int main()
 {
     TreeNode *root = create_empty_node();
     int choise;
+
     printf("if you need function for \n");
     for (int i = 0; i < 13; i++)
     {
@@ -295,6 +298,42 @@ int main()
     {
     case 1:
         printf("%d", root->data);
+        break;
+    case 2:
+        printf("process done with status of %d ", has_value(root));
+        break;
+    case 3:
+        printf("the height of tree is %d", get_tree_height(root));
+        break;
+    case 4:
+        printf("%d", root->data);
+        break;
+    case 5:
+        printf("%d", root->data);
+        break;
+    case 6:
+        printf("%d", root->data);
+        break;
+    case 7:
+        printf("%d", root->data);
+        break;
+    case 8:
+        printf("%d", search(root, 0));
+        break;
+    case 9:
+        printf("%d", search_min(root));
+        break;
+    case 10:
+        printf("%d", root->data);
+        break;
+    case 11:
+        printf("%d", all_nodes_addition(root));
+        break;
+    case 12:
+        printf("%d", root->data);
+        break;
+    case 13:
+        exit(0);
         break;
 
     default:
