@@ -280,11 +280,23 @@ int all_nodes_addition(TreeNode *root)
 
 int main()
 {
+    int choise;
     printf("if you need function for \n");
     for (int i = 0; i < 13; i++)
     {
         printf("%d - %s \n", i + 1, messages[i]);
     }
+    printf("pick one from the 13 in the menu \t");
+    scanf("%d", &choise);
+    switch (choise)
+    {
+    case 1:
+        printf("ready");
+        break;
 
+    default:
+        printf("please pick again! \t");
+        break;
+    }
     return 0;
 }
