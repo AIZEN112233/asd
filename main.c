@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 char messages[1000][1000] = {
     "create new empty tree",
@@ -280,6 +281,7 @@ int all_nodes_addition(TreeNode *root)
 
 int main()
 {
+    TreeNode *root = create_empty_node();
     int choise;
     printf("if you need function for \n");
     for (int i = 0; i < 13; i++)
@@ -288,10 +290,11 @@ int main()
     }
     printf("pick one from the 13 in the menu \t");
     scanf("%d", &choise);
+
     switch (choise)
     {
     case 1:
-        printf("ready");
+        printf("%d", root->data);
         break;
 
     default:
