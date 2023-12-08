@@ -137,7 +137,21 @@ int search(TreeNode *root, int value)
 
     return 0; // Value not found
 }
-int rechercher_min(TreeNode *racine) {}
+int search_min(TreeNode *root)
+{
+    if (root == NULL)
+    {
+        return 0; // Empty tree has no minimum value
+    }
+
+    // Traverse to the leftmost node
+    while (root->left != NULL)
+    {
+        root = root->left;
+    }
+
+    return root->data; // Minimum value is found
+}
 void supprimer(TreeNode **racine, int x) {}
 int somme(TreeNode *racine) {}
 void afficher(TreeNode *racine) {}
