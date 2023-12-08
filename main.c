@@ -16,24 +16,36 @@ char messages[1000][1000] = {
     "exit the code",
 };
 
-typedef struct ArbreNoeud
+typedef struct TreeNode
 {
     int data;
-    struct ArbreNoeud *gouch;
-    struct ArbreNoeud *droit;
-} ArbreNoeud;
-ArbreNoeud *creer_arbre_vide() {}
-int est_vide(ArbreNoeud *racine) {}
-int hauteur(ArbreNoeud *racine) {}
-ArbreNoeud *gauche(ArbreNoeud *racine) {}
-ArbreNoeud *droit(ArbreNoeud *racine) {}
-ArbreNoeud *creer_arbre(int x, ArbreNoeud *g, ArbreNoeud *d) {}
-ArbreNoeud *inserer(ArbreNoeud **racine, int x) {}
-int rechercher(ArbreNoeud *racine, int x) {}
-int rechercher_min(ArbreNoeud *racine) {}
-void supprimer(ArbreNoeud **racine, int x) {}
-int somme(ArbreNoeud *racine) {}
-void afficher(ArbreNoeud *racine) {}
+    struct TreeNode *left;
+    struct TreeNode *right;
+} TreeNode;
+
+TreeNode *create_empty_node()
+{
+    TreeNode *node = NULL;
+    node = (TreeNode *)malloc(sizeof(TreeNode));
+    if (node != NULL)
+    {
+        node->data = 0;
+        node->left = NULL;
+        node->right = NULL;
+    }
+    return node;
+}
+int est_vide(TreeNode *racine) {}
+int hauteur(TreeNode *racine) {}
+TreeNode *gauche(TreeNode *racine) {}
+TreeNode *droit(TreeNode *racine) {}
+TreeNode *creer_arbre(int x, TreeNode *g, TreeNode *d) {}
+TreeNode *inserer(TreeNode **racine, int x) {}
+int rechercher(TreeNode *racine, int x) {}
+int rechercher_min(TreeNode *racine) {}
+void supprimer(TreeNode **racine, int x) {}
+int somme(TreeNode *racine) {}
+void afficher(TreeNode *racine) {}
 
 int main()
 {
