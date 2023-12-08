@@ -152,7 +152,117 @@ int search_min(TreeNode *root)
 
     return root->data; // Minimum value is found
 }
-void supprimer(TreeNode **racine, int x) {}
+void delete_node(TreeNode **root, int value)
+{
+    if (*root == NULL)
+    {
+        return; // Value not found in an empty tree
+    }
+
+    TreeNode *current = *root;
+    TreeNode *parent = NULL;
+
+    // Find the node to delete
+    while (current != NULL && current->data != value)
+    {
+        parent = current;
+        if (value < current->data)
+        {
+            current = current->left;
+        }
+        else
+        {
+            current = current->right;
+        }
+    }
+
+    // If the node is not found, return
+    if (current == NULL)
+    {
+        return;
+    }
+
+    // Case 1: Node has no children
+    if (current->left == NULL && current->right == NULL)
+    {
+        if (parent == NULL)
+        {
+            // Deleting root node
+            *root = NULL;
+        }
+        else if (parent->left == current)
+        {
+            parent->left = NULL;
+        }
+        else
+        {
+            parent->right = NULL;
+        }
+        free(current);
+        return;
+    }
+
+    // Case 2: Node has one child
+    if (current->left != NULL && current->right == NULL)
+    {
+        if (parent == NULL)
+        {
+            *root = current->left;
+        }
+        else if (parent->left == current)
+        {
+            parent->left = current->left;
+        }
+        else
+        {
+            parent->right = current->left;
+        }
+        free(current);
+        return;
+    }
+
+    if (current->left == NULL && current->right != NULL)
+    {
+        if (parent == NULL)
+        {
+            *root = current->right;
+        }
+        else if (parent->left == current)
+        {
+            parent->left = current->right;
+        }
+        else
+        {
+            parent->right = current->right;
+        }
+        free(current);
+        return;
+    }
+
+    // Case 3: Node has two children
+    TreeNode *successor = current->right;
+    TreeNode *successor_parent = current;
+
+    while (successor->left != NULL)
+    {
+        successor_parent = successor;
+        successor = successor->left;
+    }
+
+    // Copy successor's data to the node to be deleted
+    current->data = successor->data;
+
+    // Delete the successor node
+    if (successor_parent == current)
+    {
+        current->right = successor->right;
+    }
+    else
+    {
+        successor_parent->left = successor->right;
+    }
+    free(successor);
+}
 int somme(TreeNode *racine) {}
 void afficher(TreeNode *racine) {}
 
