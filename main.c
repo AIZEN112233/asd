@@ -43,7 +43,20 @@ int has_value(TreeNode *node)
     }
     return 1; // Non-empty tree has a value
 }
-int hauteur(TreeNode *racine) {}
+int get_tree_height(TreeNode *node)
+{
+    if (node == NULL)
+    {
+        return 0; // Empty tree has height 0
+    }
+
+    // Recursively find the height of left and right subtrees
+    int left_height = get_tree_height(node->left);
+    int right_height = get_tree_height(node->right);
+
+    // Take the maximum of left and right heights and add 1 for the current node
+    return 1 + (left_height > right_height ? left_height : right_height);
+}
 TreeNode *gauche(TreeNode *racine) {}
 TreeNode *droit(TreeNode *racine) {}
 TreeNode *creer_arbre(int x, TreeNode *g, TreeNode *d) {}
