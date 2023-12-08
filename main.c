@@ -35,7 +35,14 @@ TreeNode *create_empty_node()
     }
     return node;
 }
-int est_vide(TreeNode *racine) {}
+int has_value(TreeNode *node)
+{
+    if (node == NULL)
+    {
+        return 0; // Empty tree has no value
+    }
+    return 1; // Non-empty tree has a value
+}
 int hauteur(TreeNode *racine) {}
 TreeNode *gauche(TreeNode *racine) {}
 TreeNode *droit(TreeNode *racine) {}
