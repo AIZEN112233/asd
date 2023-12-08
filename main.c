@@ -75,7 +75,43 @@ TreeNode *create_tree(int value, TreeNode *left, TreeNode *right)
 
     return node;
 }
-TreeNode *inserer(TreeNode **racine, int x) {}
+TreeNode *insert(TreeNode **root, int value)
+{
+    // Create a new node with the given value
+    TreeNode *new_node = create_tree(value, NULL, NULL);
+    if (*root == NULL)
+    {
+        // Empty tree, set the new node as the root
+        *root = new_node;
+        return new_node;
+    }
+
+    // Find the appropriate place to insert the new node
+    TreeNode *current = *root;
+    while (1)
+    {
+        if (value < current->data)
+        {
+            if (current->left == NULL)
+            {
+                // Insert the new node as the left child
+                current->left = new_node;
+                return new_node;
+            }
+            current = current->left;
+        }
+        else
+        {
+            if (current->right == NULL)
+            {
+                // Insert the new node as the right child
+                current->right = new_node;
+                return new_node;
+            }
+            current = current->right;
+        }
+    }
+}
 int rechercher(TreeNode *racine, int x) {}
 int rechercher_min(TreeNode *racine) {}
 void supprimer(TreeNode **racine, int x) {}
