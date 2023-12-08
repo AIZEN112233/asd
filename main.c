@@ -112,7 +112,31 @@ TreeNode *insert(TreeNode **root, int value)
         }
     }
 }
-int rechercher(TreeNode *racine, int x) {}
+int search(TreeNode *root, int value)
+{
+    if (root == NULL)
+    {
+        return 0; // Value not found in an empty tree
+    }
+
+    while (root != NULL)
+    {
+        if (value == root->data)
+        {
+            return 1; // Found the value
+        }
+        else if (value < root->data)
+        {
+            root = root->left; // Search in the left subtree
+        }
+        else
+        {
+            root = root->right; // Search in the right subtree
+        }
+    }
+
+    return 0; // Value not found
+}
 int rechercher_min(TreeNode *racine) {}
 void supprimer(TreeNode **racine, int x) {}
 int somme(TreeNode *racine) {}
