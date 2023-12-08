@@ -263,8 +263,20 @@ void delete_node(TreeNode **root, int value)
     }
     free(successor);
 }
-int somme(TreeNode *racine) {}
-void afficher(TreeNode *racine) {}
+int all_nodes_addition(TreeNode *root)
+{
+    if (root == NULL)
+    {
+        return 0; // Empty tree has sum 0
+    }
+
+    // Recursively calculate sum of left and right subtrees
+    int left_sum = all_nodes_addition(root->left);
+    int right_sum = all_nodes_addition(root->right);
+
+    // Add the current node's data to the sum of subtrees
+    return left_sum + right_sum + root->data;
+}
 
 int main()
 {
